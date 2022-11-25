@@ -1,14 +1,37 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-void soma(char *s, int *sum, int *dg) {
-    if (s[0] == '\0') {
-        return;
+// soma recursiva
+// 1 - vai pegar o input, transformar cada caracter em digito e somar 
+// 2 - verificar se a soma é igual a 9: return;
+// 3 - depois vai pegar essa soma e transformar em caracteres
+// 4 - chamar soma novamente
+
+void soma(char *s, int length) {
+    int sum = 0;
+    
+    // soma valores do input
+    for (int i = 0; s[i] != 0; i++)
+    {
+        length = i;
+        sum += s[i] - 48;
     }
-    *sum += s[0] - 48;
-    printf("%c", s[0]);
-    soma(&s[1], sum, dg);
-    *dg += 1;
+    if(sum % 10 == 0 ) return;
+    
+    char novaSoma[length];
+
+    // atribui a soma a uma string 
+    for (int i = length; i >= 0; i-- ) 
+    {
+        novaSoma[i] =  (sum % 10) + 48;
+        sum /= 10;
+    }
+    novaSoma[2] = '\0';
+    printf("Nova soma string %s\n", novaSoma);
+
+    soma(novaSoma, length);
+    
 }
 
 int main() {
@@ -17,19 +40,12 @@ int main() {
 
     scanf("%s",&input);
     while(input[0] != '0') {
-        int sum = 0, dg = 0;
+        int dg = 0;
         a = strlen(input);
 
-        soma(input, &sum, &dg);
+        soma(input, a);
         
-        printf("\n%d %d", sum, dg);
-        
-        if(sum % 9 == 0) {
-            printf(" is multiple of 9 and has a 9-degree %d\n", dg);
-        } else {
-            printf(" is not a multiple of 9.\n");
-        }
-
+        printf("strlen %d soma %d dg %d",a, dg);
         scanf("%s",&input);
 
     }

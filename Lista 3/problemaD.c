@@ -1,5 +1,16 @@
 #include <stdio.h>
 
+/*
+
+Soma dos dígitos
+
+Dado um inteiro não negativo, sua tarefa é escrever 
+uma função recursiva que calcule a soma de todos os 
+dígitos deste número.
+
+Atenção: Você não pode usar laços na sua solução.
+*/
+
 void soma(char *s, int *sum) {
     if (s[0] == '\0') {
         return;
