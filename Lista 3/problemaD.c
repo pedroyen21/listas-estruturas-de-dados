@@ -1,4 +1,3 @@
-#include <stdio.h>
 
 /*
 
@@ -10,6 +9,8 @@ dígitos deste número.
 
 Atenção: Você não pode usar laços na sua solução.
 */
+
+#include <stdio.h>
 
 void soma(char *s, int *sum) {
     if (s[0] == '\0') {
