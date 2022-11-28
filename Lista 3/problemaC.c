@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 
 /*
@@ -41,52 +38,40 @@ Exemplo de Saída:
 Author: David Déharbe adaptado por Sérgio Cipriano e João Cunha
 
 */
-// soma recursiva
-// 1 - vai pegar o input, transformar cada caracter em digito e somar 
-// 2 - verificar se a soma é igual a 9: return;
-// 3 - depois vai pegar essa soma e transformar em caracteres
-// 4 - chamar soma novamente
 
-void soma(char *s, int length) {
-    int sum = 0;
-    
-    // soma valores do input
-    for (int i = 0; s[i] != 0; i++)
-    {
-        length = i;
-        sum += s[i] - 48;
-    }
-    if(sum % 10 == 0 ) return;
-    
-    char novaSoma[length];
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-    // atribui a soma a uma string 
-    for (int i = length; i >= 0; i-- ) 
-    {
-        novaSoma[i] =  (sum % 10) + 48;
-        sum /= 10;
-    }
-    novaSoma[2] = '\0';
-    printf("Nova soma string %s\n", novaSoma);
-
-    soma(novaSoma, length);
-    
-}
+int soma(int *sum, int *dg);
 
 int main() {
-    char input[1001];
-    int a;
-
-    scanf("%s",&input);
-    while(input[0] != '0') {
-        int dg = 0;
-        a = strlen(input);
-
-        soma(input, a);
-        
-        printf("strlen %d soma %d dg %d",a, dg);
-        scanf("%s",&input);
-
+    char s[1001];
+    int a = 0;
+    while(1){
+        scanf("%s %n",&s, &a);
+        if (s[0] == '0') break;
+        int sum = 0, dg = 1;
+        for (int i = 0; i < a - 1; i++){
+            sum += s[i] - 48;
+        }
+        if (soma(&sum, &dg) == 9) {
+            printf("\n%s is a multiple of 9 and has 9-degree %d.", s, dg);
+        } else {
+            printf("\n%s is not a multiple of 9.\n", s);
+        };
     }
+}
 
+int soma(int *sum, int *dg) {
+    if (*sum / 10 == 0) return *sum;
+    int s = 0;
+    for (int i = 0;  (*sum % 10) != 0 || (*sum / 10) != 0; i++)
+    {
+        s += *sum % 10;
+        *sum /= 10;
+    }
+    *dg += 1;
+    *sum = s;
+    soma(sum, dg);
 }

@@ -21,7 +21,6 @@ void movexs(char  *s) {
     }
     printf("%c", s[0]);
     movexs(&s[1]);
-
 }
 
 int main() {

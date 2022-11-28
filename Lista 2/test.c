@@ -2,11 +2,6 @@
 #include <stdio.h>
 
 int main(int escolha) {
-    if (escolha == 1) {
-        printf("escolha 1");
-    }
-    else {
-
     for (int i = 1; i <= 4; i++) {
         char comando[50];
         char mostrarInput[50];
@@ -18,5 +13,5 @@ int main(int escolha) {
         system(comando);
         printf("-------------\n");
     }
-    }
+    
 }
