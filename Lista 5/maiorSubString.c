@@ -7,8 +7,7 @@ int maiorSubString(char *str, char *sub, int maior, int tam, int count, int *con
         if(*contando == 0) {
             *contando = 1;
         } else {
-            *contando = 0;
-            if(maior < count) maior = count;
+            maior += count;
         }
     }
     if(*contando == 1) count += 1;
@@ -21,7 +20,10 @@ int main() {
     int maior = 0, tam, count = 0, contando = 0;
     scanf("%s", str);
     scanf("%s%n", sub, &tam);
-    printf("%d\n", strncmp(str, sub, tam));
+    tam -= 1;
+    
+    printf("%d\n", maiorSubString(str, sub, maior, tam, count, &contando) + tam);
+    
 }
 
 
