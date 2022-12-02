@@ -1,2 +1,2 @@
 catcowcat
-cow
+cat

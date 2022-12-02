@@ -15,15 +15,22 @@ void processaJogos(char *v, int jogos) {
         }
         k++;
     }
-    if (jogos == 1) 
-    { 
+    if (jogos == 1) { 
         printf("%c\n", vencedores[0]);
         return;
     }
+
     processaJogos(vencedores, jogos / 2);
 }
 
 int main(void) {
-    char times[16] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'};
+    char times[16] = 
+    {
+    'A', 'B', 'C', 'D', 
+    'E', 'F', 'G', 'H', 
+    'I', 'J', 'K', 'L', 
+    'M', 'N', 'O', 'P'
+    };
+
     processaJogos(times, 8);
 }
