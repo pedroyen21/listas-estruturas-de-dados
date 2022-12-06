@@ -29,16 +29,20 @@ int main()
     int T, N;
     while(scanf("%d %d\n", &T, &N) == 2 && T != 0) 
     {
-        long int pontosTotal = 0;
+        long int totalPontos = 0;
         int pontosTime = 0;
         int nEmpates;
         char time[11];
         for(int i = 0; i < T; i++)
         {
             scanf("%s %d\n", &time, &pontosTime);
-            pontosTotal += pontosTime;
+            totalPontos += pontosTime;
         }
-        nEmpates = 3*N - pontosTotal;
+        // Esta formula foi achada atraves de um sistema de equacoes lineares:
+        // 3*nVitorias + 2*nEmpates = totalPontos;
+        //   nVitorias +   nEmpates = N;
+        //  => nEmpates = 3*N - totalPontos;
+        nEmpates = 3*N - totalPontos;
         printf("%d\n", nEmpates);
     };
 }

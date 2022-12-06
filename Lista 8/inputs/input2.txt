@@ -1,0 +1,5 @@
+5
+oxoox
+xoooo
+
+Resultado esperado: 10

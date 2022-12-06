@@ -3,14 +3,14 @@
 
 void processaJogos(char *v, int jogos) {    
     char vencedores[jogos];
-    int golsTime1, golsTime2, k = 0, times = jogos * 2;
-    
-    for(int i = 0; i < times; i+= 2) {
-        scanf("%d %d",&golsTime1, &golsTime2);
+    int golsTime1, golsTime2, ntimes = jogos * 2;
+    int k = 0;
+
+    for(int i = 0; i < ntimes; i += 2) {
+        scanf("%d %d", &golsTime1, &golsTime2);
         if(golsTime1 > golsTime2) {
             vencedores[k] = v[i];
-        } 
-        if(golsTime1 < golsTime2) {
+        } else {
             vencedores[k] = v[i + 1];
         }
         k++;
