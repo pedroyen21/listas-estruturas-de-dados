@@ -34,7 +34,7 @@ int main() {
         comandos[i] = getchar();
     }
 
-    char caracter = texto[linhaCursor][colunaCursor]; 
+    char caractere = texto[linhaCursor][colunaCursor]; 
     int a = 0;
     while(a < i) {
         //j - desce linha
@@ -42,7 +42,7 @@ int main() {
             if(linhaCursor < n - 1) {
                 linhaCursor++;
                 for (int j = 0; texto[linhaCursor][j] != 10 && j <= colunaDesejada; j++){
-                    caracter = texto[linhaCursor][j];
+                    caractere = texto[linhaCursor][j];
                     colunaCursor = j;
                 }   
             }
@@ -52,12 +52,12 @@ int main() {
             if(linhaCursor > 0) {
                 linhaCursor--;
                 for (int j = 0; texto[linhaCursor][j] != 10 && j <= colunaDesejada; j++){
-                    caracter = texto[linhaCursor][j];
+                    caractere = texto[linhaCursor][j];
                     colunaCursor = j;
                 }   
             }
         }     
-        printf("%d %d %c\n", linhaCursor+1, colunaCursor+1, caracter);
+        printf("%d %d %c\n", linhaCursor+1, colunaCursor+1, caractere);
         a++;
     }
 }
