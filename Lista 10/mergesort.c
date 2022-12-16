@@ -26,7 +26,7 @@ void merge(int *v, int l, int m, int r) {
 }
 
 void mergesort(int *v, int l, int r) {
-    if( l >= r) return;
+    if(l >= r) return;
 
     int meio = (l + r) / 2;
 

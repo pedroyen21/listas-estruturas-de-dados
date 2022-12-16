@@ -38,14 +38,14 @@ void selectionsort(int *v,  int l, int r) {
     }
 }
 
-int buscaBinaria(int *v, int *pO, int l, int r, int n) {
+int buscaBinaria(int *v, int l, int r, int n) {
     if(l > r) return -1;
     int meio = (l + r) / 2;
     if(v[meio] == n) return meio;
     else if(v[meio] > n) r = meio - 1;
     else l = meio + 1;
 
-    buscaBinaria(v, pO, l, r, n);
+    buscaBinaria(v, l, r, n);
 }
 
 int main(void) {
@@ -58,12 +58,9 @@ int main(void) {
 
     selectionsort(vetor,  0, N-1);
 
-    for(int i = 0; i < N; i++) printf("%d", vetor[i]);
-    printf("\n");
-    for(int i = 0; i < N; i++) printf("%d", posOriginais[i]);
     int t;
     for(int j = 0; j < M; j++) {
         scanf("%d", &t); 
-        printf("%d\n", buscaBinaria(vetor, posOriginais, 0, N, t));
+        printf("%d\n", buscaBinaria(vetor, 0, N, t));
     }
 }
