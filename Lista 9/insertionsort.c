@@ -9,18 +9,6 @@ void printv(int *v, int i) {
     }
     printf("\n");
 }
-// i=1 j=1 chave=3
-//  7 3 2 5 4 3 
-
-// i=1 j=0 chave=3
-//  3 7 2 5 4 3 
-
-// i=2 j=1 chave=2
-//  3 7 7 5 4 3
-
-// i=2 j=1 chave=2
-//  3 7 7 5 4 3 
-
 
 void insertionsort(int *v, int l, int r) {
     long int chave, j;

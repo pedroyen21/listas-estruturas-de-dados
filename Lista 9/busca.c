@@ -56,7 +56,7 @@ int main(void) {
     int v[N];
     int p[N];
     for(int i = 0; i < N; i++) scanf("%d", v + i), p[i] = i;
-    
+
     selectionsort(v, p, 0, N - 1);
     
     int t;
@@ -66,10 +66,4 @@ int main(void) {
     }
 }
 
-
-// 7 3 4 9 1 5
-// 0 1 2 3 4 5 
-
-// 1 3 4 5 7 9
-// 4 1 2 5 0 3
 
