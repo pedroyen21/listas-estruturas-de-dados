@@ -1,0 +1,10 @@
+4
+22136
+2752
+14516
+13915
+
+Resultado esperado: 
+2752
+22136
+Elementos: 6

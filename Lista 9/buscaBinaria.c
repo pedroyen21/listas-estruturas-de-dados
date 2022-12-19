@@ -40,7 +40,9 @@ void selectionsort(int *v,  int l, int r) {
 
 int buscaBinaria(int *v, int l, int r, int n) {
     if(l > r) return -1;
+
     int meio = (l + r) / 2;
+    
     if(v[meio] == n) return meio;
     else if(v[meio] > n) r = meio - 1;
     else l = meio + 1;

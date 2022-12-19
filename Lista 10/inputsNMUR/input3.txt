@@ -1,0 +1,11 @@
+5
+1
+1
+2
+2
+3
+
+Resultado esperado
+1
+1000000003
+Elementos: 5

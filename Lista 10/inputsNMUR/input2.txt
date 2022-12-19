@@ -1,0 +1,10 @@
+4
+22845
+22576
+582
+18819
+
+Resultado esperado:
+582
+22845
+Elementos: 6
