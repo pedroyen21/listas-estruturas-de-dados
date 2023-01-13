@@ -54,7 +54,7 @@ int buscaBinaria(int *v, int l, int r, int n) {
     else if(v[meio] > n) r = meio - 1;
     else l = meio + 1;
 
-    buscaBinaria(v, l, r, n);
+    return buscaBinaria(v, l, r, n);
 }
 
 long int *intercala(int *v1, int r1, long int *v2, int r2) {
@@ -120,7 +120,7 @@ int main() {
     long int *reinseridos = intercala(v, novor, malucos, mi);
 
     for(int i = 0; i <= novor + mi + 1; i += 4) 
-        printf("%d\n", reinseridos[i]);
+        printf("%ld\n", reinseridos[i]);
 
     printf("Elementos: %d\n", novor + mi + 2);
 

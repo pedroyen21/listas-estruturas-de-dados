@@ -9,7 +9,8 @@ int main() {
         sprintf(mostrarInput, "cat ./inputsNMUR/input%d.txt", i);
         system(mostrarInput);
         printf("\n\nResposta: \n");
-        sprintf(comando, "./numerosMalucos < ./inputs/input%d.txt", i);
+        system("gcc -Wall -Wextra -Wpedantic -O2 numerosMalucos.c");
+        sprintf(comando, "./numerosMalucos < ./inputsNMUR/input%d.txt", i);
         system(comando);
         printf("-----------------------------------\n");
     }

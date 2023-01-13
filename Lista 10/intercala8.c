@@ -21,7 +21,7 @@ void merge(int *v, int l, int m, int r) {
     while(ib <= r) 
         v2[i++] = v[ib++];
 
-    i = 0
+    i = 0;
     for(int j = l; j <= r; j++) 
         v[j] = v2[i++];
 
@@ -29,37 +29,32 @@ void merge(int *v, int l, int m, int r) {
 }
 
 int alimentaVetor(int *v, int inicio, int fim) {
-    for(int i = inicio; i < fim; i++) scanf("%d", v + i);
-}
-
-void mergesort(int *v, int l, int r) {
-    if( l >= r) return;
-
-    int meio = (l + r) / 2;
-
-    mergesort(v, l, meio);
-    mergesort(v, meio + 1, r);
-    merge(v, l, meio, r);  
+    for(int i = inicio; i <= fim; i++) scanf("%d", v + i);
 }
 
 int main() {
 
-    int l = 0, r;    
-    scanf("%d", &r); 
-    int *v = malloc(4 * r);
-    alimentaVetor(v, l, r);
+    int v[800000];
+    int tam;
+    int r, l = 0;
+    scanf("%d", &tam);
 
-    for(int i = 1; i <= 7; i++) {
-        int t;
-        scanf("%d", &t);
-        l = r;
-        r += t;
-        v = realloc(v, 4 * (r));
-        alimentaVetor(v, l, r );
+    r = tam - 1;
+    alimentaVetor(v, l, r);
+    l = tam;
+    r++;
+
+    for(int i = 0; i <= 7; i++) {
+        scanf("%d", &tam);
+        if(tam == 0) continue;
+        r += tam - 1;
+        alimentaVetor(v, l, r);
+        printf("l = %d r = %d \n", l, r);
+        merge(v, l, l + (r - l) / 2, r);
+        l = tam;
+        r++;
+
     }
-    
-    mergesort(v, 0, r-1);    
-    for(int i = 0; i < r; i++) printf("%d ", v[i]);
-    printf("\n");
-    
+    for(int i = 0; i < r; i++)
+        printf("%d ", v[i]);
 }
