@@ -9,7 +9,7 @@ int median(Item *v, int l, int r) {
     int m = (r + l) / 2;
     if ((v[m] <= v[l] && v[l] <= v[r]) || (v[r] <= v[l] && v[l] <= v[m])) return l;
     if ((v[l] <= v[m] && v[m] <= v[r]) || (v[r] <= v[m] && v[m] <= v[l])) return m;
-    if ((v[m] <= v[r] && v[r] <= v[l]) || (v[l] <= v[r] && v[r] <= v[m])) return r;
+    else return r;
 }
 
 int partition(Item *v, int l, int r) {
@@ -26,6 +26,7 @@ int partition(Item *v, int l, int r) {
 
 void quicksort(Item *v, int l, int r) {
     if (l >= r) return;
+    
     //exchange the last term with the median
     int med = median(v, l, r);
     exch(v[med] , v[r]);

@@ -1,6 +1,6 @@
 /*
 
-Maior substring
+ substring
 
 Sua tarefa nesse exercício é, dadas duas cadeias de caracteres str e sub, 
 determinar recursivamente qual a maior subcadeia de str que começa e termina 
