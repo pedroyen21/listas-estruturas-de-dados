@@ -3,14 +3,15 @@
 #include <string.h>
 
 #define exch(A, B) {Item t = A; A = B; B = t;}
-
+#define ncandidatos 90000
 
 typedef struct {
-    char codigo[6];
+    long int codigo;
     int votos;
 } candidato;
 
 typedef candidato Item;
+
 
 int median(Item *v, int l, int m, int r) {
     int vm = v[m].votos;
@@ -22,11 +23,17 @@ int median(Item *v, int l, int m, int r) {
     else return r;
 }
 
+int greater(Item a, Item b) {
+    if(a.votos > b.votos) return 1;
+    if(a.votos < b.votos) return 0;
+    else return a.codigo > b.codigo;
+}
+
 int partition(Item *v, int l, int r) {
-    int x = v[r].votos;
+    Item x = v[r];
     int i = l - 1;
     for(int j = l; j < r; j++) {
-        if(v[j].votos < x) {
+        if(greater(v[j], x)) {
             i++;
             exch(v[j], v[i]);
         }
@@ -56,89 +63,52 @@ void quickselect(Item *v, int p, int l, int r) {
         quickselect(v, p, l, j - 1);
 }
 
-void print(Item *v, int l, int r) {
-    for(int i = l; l <= r; i++) {
-        printf("%d ", v[i].codigo);
+
+void printvotos(candidato *v) {
+    for(int i = 0; i < ncandidatos; i++) {
+        if(v[i].votos > 0) 
+            printf("[%ld,%d]\n", v[i].codigo, v[i].votos);
     }
-    printf("\n");
 }
 
-void eleitos(Item *v, int venc, int cod) {
-    switch (cod)
-    {
-    case 0:
-        Item max = v[0];
-        int vts = 0;
-        for(int i = 1; i < 100; i++) {
-            vts++; 
-            if(v[i].votos > max.votos) 
-                max = v[i];
-        }
-        float res = max.votos / vts;
-        if(res >= 0.51) 
-            printf("%d\n", max.codigo);
-        else    
-            printf("Segundo turno\n");
+void resultado(candidato *v, int l, int r, int n) {
 
-        break;
-    
-    case 1:
-        quickselect(v, venc, 100, 999);
-        quicksort(v, 100, venc);
-        print(v, 100, venc);
-    
-    case 2:
-        quickselect(v, venc, 1000, 9999);
-        quicksort(v, 1000, venc);
-        print(v, 1000, venc);
-    
-    case 3:
-        quickselect(v, venc, 10000, 99999);
-        quicksort(v, 10000, venc);
-        print(v, 10000, venc);
-    
-    default:
-        break;
-    }
 }
 
 int main(void) {
     int votos_validos = 0;
     int votos_invalidos = 0;
-    int ncandidatos = 0;
 
-    candidato candidatos[100000];
+    candidato candidatos[ncandidatos];
 
-    int sen_venc;
-    int depest_venc;
-    int depfed_venc;
-    scanf("%d %d %d", &sen_venc, &depfed_venc, &depest_venc);
+    int sv;
+    int dfv;
+    int dev;
+    scanf("%d %d %d", &sv, &dfv, &dev);
 
-    char voto[6];
-    int k = 0;
-    while(scanf("%s", &voto) == 1) {
-        if(voto[0] == '-') {
-            votos_invalidos++;
-            break;
-        }
-        for(int j = 0; j <= k; j++)
-            if(strcmp(candidatos[j].codigo , voto) == 0) {
-                candidatos[j].votos++;
-                break;
+    long int voto;
+
+    while(scanf("%ld", &voto) == 1) {
+        if(voto < 0) votos_invalidos++;
+        else {
+            votos_validos++;
+            if(candidatos[voto].votos > 0) candidatos[voto].votos++;
+            else {
+                candidatos[voto].votos = 1;
+                candidatos[voto].codigo = voto;
             }
-        strcpy(candidatos[k].codigo, voto);
-        candidatos[k].votos = 1;
-        ncandidatos++;
-        votos_validos++;
-        k++;
+        }
     }
 
-    for(int i = 0; i < ncandidatos; i++) {
-        if(candidatos[i].votos > 0) 
-            printf("[%s,%d]\n", candidatos[i].codigo, candidatos[i].votos);
-    }
+    printvotos(candidatos);
+    resultado(candidatos, 0, 0);
+    printvotos(candidatos);
 
+    quickselect(v, venc, 100, 999);
+        quicksort(v, 100, venc);
+        print(v, 100, venc);
+    //eleitos(candidatos, sen_venc, 1);
+    
     printf("validos: %d\n", votos_validos);
     printf("invalidos: %d\n", votos_invalidos);
-    return 0;
 }

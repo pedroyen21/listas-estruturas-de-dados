@@ -47,7 +47,7 @@ void mergesort(Item *v, int l, int r) {
     merge(v, l, meio, r);
 }
 
-int busca_binaria(Traducao *dicionario, int l, int r, char *palavra, int tam) {
+int busca_binaria(Item *dicionario, int l, int r, char *palavra) {
     if(l > r) return -1;
 
     int meio = (r + l)/2;
@@ -58,7 +58,7 @@ int busca_binaria(Traducao *dicionario, int l, int r, char *palavra, int tam) {
     else { 
         l = meio + 1;
     }
-    return busca_binaria(dicionario, l, r, palavra, tam);
+    return busca_binaria(dicionario, l, r, palavra);
 }
 
 void preenche_dicionario(Traducao *v, int palavras) {
