@@ -71,9 +71,15 @@ void printvotos(candidato *v) {
     }
 }
 
-void resultado(candidato *v, int l, int r, int n) {
-
-}
+void resultado(candidato *v, int p, int l, int r){
+    quickselect(v, p, l, r);
+    printf("quickselect");
+    quicksort(v, l, p);
+    printf("quicksort");
+    for(int i = l; i <= p; i++) {
+        printf("%ld", v[i].codigo);
+    }
+};
 
 int main(void) {
     int votos_validos = 0;
@@ -87,6 +93,8 @@ int main(void) {
     scanf("%d %d %d", &sv, &dfv, &dev);
 
     long int voto;
+    for(int j = 0; j < ncandidatos; j++) 
+        candidatos[j].votos = 0;
 
     while(scanf("%ld", &voto) == 1) {
         if(voto < 0) votos_invalidos++;
@@ -101,13 +109,8 @@ int main(void) {
     }
 
     printvotos(candidatos);
-    resultado(candidatos, 0, 0);
+    resultado(candidatos, 0, 10, 99);
     printvotos(candidatos);
-
-    quickselect(v, venc, 100, 999);
-        quicksort(v, 100, venc);
-        print(v, 100, venc);
-    //eleitos(candidatos, sen_venc, 1);
     
     printf("validos: %d\n", votos_validos);
     printf("invalidos: %d\n", votos_invalidos);
