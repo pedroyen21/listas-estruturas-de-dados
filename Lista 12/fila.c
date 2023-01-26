@@ -11,7 +11,7 @@ typedef struct {
 }fila;
 
 int estacheia(fila *f) {
-    if(f->fim == f->tamanho)
+    if(f->fim - f->inicio == f->tamanho)
         return 1; 
     else
         return 0;

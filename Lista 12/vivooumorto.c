@@ -82,10 +82,10 @@ int main(void) {
             //reacoes
             for(int j = 0; j < p; j++) {
                 scanf("%d", &r);
-                if(r != ordem) desenfila(&f);
-                else {
+                if(r != ordem) 
+                    desenfila(&f);
+                else 
                     enfila(&aux, desenfila(&f));
-                }
             }
 
             f = aux;
