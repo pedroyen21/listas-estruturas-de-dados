@@ -1,5 +1,0 @@
-30
-oooooooooooooooooooooooooooooo
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-Resultado Esperado: 31

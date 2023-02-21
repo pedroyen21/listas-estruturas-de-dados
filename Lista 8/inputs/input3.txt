@@ -1,5 +1,0 @@
-5
-ooxox
-xxxoo
-
-Resultado esperado 7

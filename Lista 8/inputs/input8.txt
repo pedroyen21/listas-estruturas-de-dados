@@ -1,5 +1,0 @@
-3
-oox
-xoo
-
-Resultado esperado: Empate

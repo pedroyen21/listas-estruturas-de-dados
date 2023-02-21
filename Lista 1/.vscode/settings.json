@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "strings.h": "c",
-        "cstdio": "c",
-        "*.tcc": "c",
-        "stdio.h": "c"
-    },
-    "C_Cpp.errorSquiggles": "Disabled"
-}

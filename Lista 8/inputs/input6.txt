@@ -1,5 +1,0 @@
-3
-ooo
-xxx
-
-Resultado esperado: 4
